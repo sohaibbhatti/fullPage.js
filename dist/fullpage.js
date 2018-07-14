@@ -8,6 +8,7 @@
  *
  * Copyright (C) 2018 http://alvarotrigo.com/fullPage - A project by Alvaro Trigo
  */
+try {
 (function( root, window, document, factory, undefined) {
     if( typeof define === 'function' && define.amd ) {
         // AMD. Register as an anonymous module.
@@ -3862,4 +3863,7 @@ if(window.jQuery){
             });
         };
     })(jQuery, fullpage);
+}
+} catch (e) {
+  console.log(e);
 }
