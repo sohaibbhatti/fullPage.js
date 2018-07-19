@@ -363,6 +363,27 @@ function IScroll (el, options) {
 
     this.options.invertWheelDirection = this.options.invertWheelDirection ? -1 : 1;
 
+    /*
+     * Turns iScroll `mousewheel` option off dynamically
+     * https://github.com/cubiq/iscroll/issues/1036
+    */
+    this.wheelOn = function () {
+      this.wrapper.addEventListener('wheel', this);
+      this.wrapper.addEventListener('mousewheel', this);
+      this.wrapper.addEventListener('DOMMouseScroll', this);
+    };
+
+
+    /*
+     * Turns iScroll `mousewheel` option on dynamically
+     * https://github.com/cubiq/iscroll/issues/1036
+    */
+    this.wheelOff = function () {
+      this.wrapper.removeEventListener('wheel', this);
+      this.wrapper.removeEventListener('mousewheel', this);
+      this.wrapper.removeEventListener('DOMMouseScroll', this);
+    };
+
 // INSERT POINT: NORMALIZATION
 
     // Some defaults
@@ -2157,26 +2178,6 @@ if ( typeof module != 'undefined' && module.exports ) {
 
         var RESPONSIVE =            'fp-responsive';
         var AUTO_HEIGHT_RESPONSIVE= 'fp-auto-height-responsive';
-
-        /*
-        * Turns iScroll `mousewheel` option off dynamically
-        * https://github.com/cubiq/iscroll/issues/1036
-        */
-        IScroll.prototype.wheelOn = function () {
-            this.wrapper.addEventListener('wheel', this);
-            this.wrapper.addEventListener('mousewheel', this);
-            this.wrapper.addEventListener('DOMMouseScroll', this);
-        };
-
-        /*
-        * Turns iScroll `mousewheel` option on dynamically
-        * https://github.com/cubiq/iscroll/issues/1036
-        */
-        IScroll.prototype.wheelOff = function () {
-            this.wrapper.removeEventListener('wheel', this);
-            this.wrapper.removeEventListener('mousewheel', this);
-            this.wrapper.removeEventListener('DOMMouseScroll', this);
-        };
 
         /**
         * Returns an integer representing the padding dimensions in px.
